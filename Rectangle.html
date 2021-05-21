@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rectangle</title>
+</head>
+<body>
+<canvas id="Canvas" width="600px" height="400px" style="border: 1px solid #d3d3d3"></canvas>
+<button type="button" onclick="">Get rekt</button>
+<script>
+ //   function GetRectangleSizes(width, height){
+ //       width = parseInt(prompt ("input Width"));
+ //       height = parseInt(prompt ('input Height'));
+ //   }
+    let Rectangle = function(width, height) {
+        this.width = parseInt(prompt ("input Width"));
+        this.height = parseInt(prompt ('input Height'));
+        this.getWidth = function() {
+            return this.width;
+        }
+        this.getHeight = function() {
+            return this.height;
+        }
+        this.getSquare = function() {
+            return (width + height) * 2;
+        }
+        this.getArea = function () {
+            return width * height;
+        }
+    }
+
+    let Rect = new Rectangle()
+    let wide = Rect.getWidth();
+    let high = Rect.getHeight();
+    alert(wide + " " +high)
+</script>
+</body>
+</html>
