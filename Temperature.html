@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature</title>
+</head>
+<body>
+<button type="button" onclick="toFahren()">Fahren</button>
+<button type="button" onclick="toKevin()">Kevin</button>
+<p id="Show"></p>
+<script>
+    let Temperature = function (Celcius) {
+        this.Celcius = Celcius;
+        this.toFahrenheit = function () {
+            return (this.Celcius * 1.8) + 32;
+        }
+        this.toKevin = function () {
+            return this.Celcius + 273.15;
+        }
+        this.toString = function () {
+            return this.Celcius + ""
+        }
+    }
+    let Obj = new Temperature(25);
+    document.getElementById("Show").innerHTML = Obj
+
+    function toFahren(F) {
+        F = Obj.toFahrenheit()
+        alert(F)
+    }
+
+    function toKevin(K) {
+        K = Obj.toKevin()
+        alert(K)
+    }
+</script>
+</body>
+</html>

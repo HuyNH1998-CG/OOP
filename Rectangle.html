@@ -19,12 +19,13 @@
 <canvas id="Canvas" width="1000px" height="500px" style="border: 1px solid #d3d3d3"></canvas>
 <br>
 <button type="button" onclick="Create()" style="">Get rect</button>
+<input type="number" id="Test">
+<button type="button" onclick="CallMe()" style="">Call</button>
 <div id="DisplayArea"></div>
 <script>
     let canvas = document.getElementById("Canvas");
     let ctx = canvas.getContext("2d")
     let Rectangle = function (width, height) {
-        debugger
         this.width = parseInt(prompt("input Width"));
         this.height = parseInt(prompt('input Height'));
         this.getWidth = function () {
@@ -43,9 +44,10 @@
             return this.getSquare()
         }
     }
-
+    let arr=[]
     function Create() {
-        let Rect = new Rectangle()
+        let Rect = new Rectangle();
+        arr.push(Rect)
         let wide = Rect.getWidth();
         let high = Rect.getHeight();
         ctx.beginPath();
@@ -65,7 +67,11 @@
         table += "</table>";
         document.getElementById("DisplayArea").innerHTML = table
     }
-
+    function CallMe(num){
+        num = document.getElementById("Test").value;
+        let x = arr[num].getArea;
+        console.log(x)
+    }
 </script>
 </body>
 </html>
