@@ -3,36 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <title>Rectangle</title>
+    <style>
+        button {
+            width: 300px;
+            height: 300px;
+            font-size: 50px;
+        }
+        div {
+            float: right;
+            font-size: 100px;
+        }
+    </style>
 </head>
 <body>
-<canvas id="Canvas" width="600px" height="400px" style="border: 1px solid #d3d3d3"></canvas>
-<button type="button" onclick="">Get rekt</button>
+<canvas id="Canvas" width="1000px" height="500px" style="border: 1px solid #d3d3d3"></canvas>
+<br>
+<button type="button" onclick="Create()" style="">Get rect</button>
+<div id="DisplayArea"></div>
 <script>
- //   function GetRectangleSizes(width, height){
- //       width = parseInt(prompt ("input Width"));
- //       height = parseInt(prompt ('input Height'));
- //   }
-    let Rectangle = function(width, height) {
-        this.width = parseInt(prompt ("input Width"));
-        this.height = parseInt(prompt ('input Height'));
-        this.getWidth = function() {
+    let canvas = document.getElementById("Canvas");
+    let ctx = canvas.getContext("2d")
+    let Rectangle = function (width, height) {
+        debugger
+        this.width = parseInt(prompt("input Width"));
+        this.height = parseInt(prompt('input Height'));
+        this.getWidth = function () {
             return this.width;
         }
-        this.getHeight = function() {
+        this.getHeight = function () {
             return this.height;
         }
-        this.getSquare = function() {
-            return (width + height) * 2;
+        this.getSquare = function () {
+            return (this.width + this.height) * 2;
         }
         this.getArea = function () {
-            return width * height;
+            return this.width * this.height;
+        }
+        this.toString = function () {
+            return this.getSquare()
         }
     }
 
-    let Rect = new Rectangle()
-    let wide = Rect.getWidth();
-    let high = Rect.getHeight();
-    alert(wide + " " +high)
+    function Create() {
+        let Rect = new Rectangle()
+        let wide = Rect.getWidth();
+        let high = Rect.getHeight();
+        ctx.beginPath();
+        ctx.rect(50, 50 , wide, high);
+        ctx.fill();
+        ctx.closePath()
+        let Area = Rect.getArea();
+        let Square = Rect.getSquare();
+        let table;
+        table = "<table>";
+        table += "<tr>";
+        table += "<td>" + "Chieu dai: " + high + "px" +"</td>";
+        table += "<td>" + "Chieu rong: " + wide + "px" +"</td>";
+        table += "<td>" + "Dien tich: " + Area + "px" +"</td>";
+        table += "<td>" + "Chu vi: " + Square + "px" +"</td>"
+        table += "</tr>";
+        table += "</table>";
+        document.getElementById("DisplayArea").innerHTML = table
+    }
+
 </script>
 </body>
 </html>
