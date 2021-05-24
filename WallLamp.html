@@ -15,19 +15,21 @@
         }
         this.switchOff = function() {
             this.connectLamp.turnOff()
-            console.log("Off")
+
         }
         this.switchOn = function() {
             this.connectLamp.turnOn()
-            console.log("On")
+
         }
     }
     let ElectricLamp = function() {
         this.turnOff = function() {
             this.status = false;
+            console.log("Off")
         }
         this.turnOn = function() {
             this.status = true;
+            console.log("On")
         }
     }
     let Button = new SwitchButton();
