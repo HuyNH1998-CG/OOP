@@ -150,7 +150,6 @@
 
     function sendMess() {
         nokia.sendMessage(prompt("Message"))
-        console.log(nokia.arraySent)
         Iphone.receiveMessage();
         console.log(Iphone.arrayInbox)
     }
@@ -185,14 +184,14 @@
     }
 
     function writeMessIphone() {
-        Iphone.writeMessage(prompt("Message"))
+        Iphone.writeMessage()
         console.log(Iphone.arrayText)
     }
 
     function sendMessIphone() {
-        Iphone.sendMessage()
+        Iphone.sendMessage(prompt("Message"))
         nokia.receiveMessage();
-        console.log(nokia.arrayInbox)
+        console.log(Iphone.arrayInbox)
     }
 
     // function receiveMessIphone() {
@@ -201,7 +200,7 @@
     // }
 
     function viewSentMessIphone() {
-        Iphone.viewSent(prompt("Select Message Index"))
+        Iphone.viewSent(prompt("Select Message Index" ))
     }
 
     function viewInboxIphone() {
