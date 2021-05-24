@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button type="button" onclick="Button.switchOn()">On</button>
+<button type="button" onclick="Button.switchOff()">Off</button>
+<h1>Switch already flicked 10 time go to console to see Or press button to flick it some more time</h1>
+<script>
+    let SwitchButton = function() {
+        this.connecting = function(Lamp){
+            this.connectLamp = Lamp
+        }
+        this.switchOff = function() {
+            this.connectLamp.turnOff()
+            console.log("Off")
+        }
+        this.switchOn = function() {
+            this.connectLamp.turnOn()
+            console.log("On")
+        }
+    }
+    let ElectricLamp = function() {
+        this.turnOff = function() {
+            this.status = false;
+        }
+        this.turnOn = function() {
+            this.status = true;
+        }
+    }
+    let Button = new SwitchButton();
+    let Bulb = new ElectricLamp();
+    Button.connecting(Bulb)
+    for(let i = 1 ; i <= 10; i++){
+        Button.switchOn();
+        Button.switchOff()
+    }
+
+</script>
+</body>
+</html>
