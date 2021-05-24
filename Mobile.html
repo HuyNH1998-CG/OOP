@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>This Is Nokia</h1><br>
+<button type="button" onclick="turnOn()">On</button>
+<button type="button" onclick="turnOff()">Off</button>
+<button type="button" onclick="charge()">Charge</button>
+<button type="button" onclick="writeMess()">Write</button>
+<button type="button" onclick="sendMess()">Send</button>
+<button type="button" onclick="viewSentMess()">ViewSent</button>
+<button type="button" onclick="viewInbox()">ViewInbox</button>
+<button type="button" onclick="use()">Use</button>
+<br>
+<h1>This Is Iphone</h1><br>
+<button type="button" onclick="turnOnIphone()">On</button>
+<button type="button" onclick="turnOffIphone()">Off</button>
+<button type="button" onclick="chargeIphone()">Charge</button>
+<button type="button" onclick="writeMessIphone()">Write</button>
+<button type="button" onclick="sendMessIphone()">Send</button>
+<button type="button" onclick="viewSentMessIphone()">ViewSent</button>
+<button type="button" onclick="viewInboxIphone()">ViewInbox</button>
+<button type="button" onclick="useIphone()">Use</button>
+<br>
+<script>
+    let Network = [];
+    let Mobile = function (battery,) {
+        this.arrayInbox = new Array();
+        this.arraySent = new Array();
+        this.arrayText = new Array();
+        this.battery = battery;
+        this.statusOn = false;
+        this.checkStatusOnOff = function () {
+            return this.statusOn;
+        }
+        this.turnOn = function () {
+            if (this.battery > 0) {
+                this.statusOn = true;
+                alert("Mobile Turned On");
+            } else {
+                alert("Not enough Battery");
+            }
+
+        }
+        this.turnOff = function () {
+            if (this.battery <= 0)
+                this.statusOn = false;
+            alert("Mobile Turned Off");
+        }
+        this.charge = function () {
+            alert("Charging " + this.battery++)
+        }
+        this.writeMessage = function () {
+            if (this.checkStatusOnOff() === true) {
+                this.arrayText.push(prompt("Message"));
+                this.battery--;
+                if (this.battery <= 0) {
+                    this.turnOff();
+                }
+            } else {
+                alert("Terminal is Turned Off");
+            }
+        }
+        this.sendMessage = function (index) {
+            if (this.checkStatusOnOff() === true) {
+                this.arraySent.push(this.arrayText[index])
+                Network.push(this.arrayText[index]);
+                this.battery--;
+                if (this.battery <= 0) {
+                    this.turnOff();
+                }
+            } else {
+                alert("Terminal is Turned Off");
+            }
+
+        }
+        this.receiveMessage = function () {
+            if (this.checkStatusOnOff() === true) {
+                this.arrayInbox.push(Network[Network.length - 1]);
+                Network.pop();
+                this.battery--;
+                if (this.battery <= 0) {
+                    this.turnOff();
+                }
+            } else {
+                alert("Terminal is Turned Off");
+            }
+
+        }
+        this.viewInbox = function (index) {
+            if (this.checkStatusOnOff() === true) {
+                alert(this.arrayInbox[index]);
+                this.battery--;
+                if (this.battery <= 0) {
+                    this.turnOff();
+                }
+            } else {
+                alert("Terminal is Turned Off");
+            }
+
+        }
+        this.viewSent = function (index) {
+            if (this.checkStatusOnOff() === true) {
+                alert(this.arraySent[index]);
+                this.battery--;
+                if (this.battery <= 0) {
+                    this.turnOff();
+                }
+            } else {
+                alert("Terminal is Turned Off");
+            }
+
+        }
+        this.use = function () {
+            if (this.checkStatusOnOff() === true) {
+                alert("Something runned " + this.battery--)
+                if (this.battery <= 0) {
+                    this.turnOff();
+                }
+            }
+        }
+    }
+
+    let nokia = new Mobile(10)
+    let Iphone = new Mobile(10)
+
+    function turnOn() {
+        nokia.turnOn()
+    }
+
+    function turnOff() {
+        nokia.turnOff()
+    }
+
+    function charge() {
+        nokia.charge()
+    }
+
+    function use() {
+        nokia.use()
+    }
+
+    function writeMess() {
+        nokia.writeMessage()
+        console.log(nokia.arrayText)
+    }
+
+    function sendMess() {
+        nokia.sendMessage(prompt("Message"))
+        console.log(nokia.arraySent)
+        Iphone.receiveMessage();
+        console.log(Iphone.arrayInbox)
+    }
+
+    // function receiveMess() {
+    //     nokia.receiveMessage();
+    //     console.log(nokia.arrayInbox)
+    // }
+
+    function viewSentMess() {
+        nokia.viewSent(prompt("Select Message Index"))
+    }
+
+    function viewInbox() {
+        nokia.viewInbox(prompt("Select Message Index"))
+    }
+
+    function turnOnIphone() {
+        Iphone.turnOn()
+    }
+
+    function turnOffIphone() {
+        Iphone.turnOff()
+    }
+
+    function chargeIphone() {
+        Iphone.charge()
+    }
+
+    function useIphone() {
+        Iphone.use()
+    }
+
+    function writeMessIphone() {
+        Iphone.writeMessage(prompt("Message"))
+        console.log(Iphone.arrayText)
+    }
+
+    function sendMessIphone() {
+        Iphone.sendMessage()
+        nokia.receiveMessage();
+        console.log(nokia.arrayInbox)
+    }
+
+    // function receiveMessIphone() {
+    //     Iphone.receiveMessage();
+    //     console.log(Iphone.arrayInbox)
+    // }
+
+    function viewSentMessIphone() {
+        Iphone.viewSent(prompt("Select Message Index"))
+    }
+
+    function viewInboxIphone() {
+        Iphone.viewInbox(prompt("Select Message Index"))
+    }
+
+    // function network() {
+    //     console.log(Network)
+    // }
+</script>
+</body>
+</html>
