@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlashLite</title>
+</head>
+<body>
+<button type="button" onclick="turnOn()">Turn on</button>
+<button type="button" onclick="Light.turnOff()">Turn Off</button>
+<button type="button" onclick="Light.light()">This thing on?</button>
+<script>
+    let Battery = function () {
+        this.setEnergy = function (energy) {
+            this.energy = energy;
+        };
+        this.getEnergy = function () {
+            return this.energy;
+        };
+        this.decreaseEnergy = function () {
+            if (this.energy > 0) {
+                this.energy--;
+            }
+        }
+    }
+    let FlashLight = function () {
+        this.setBattery = function (battery) {
+            this.battery = battery;
+        }
+        this.getBatteryInfo = function () {
+            return this.battery.getEnergy();
+        };
+        this.light = function () {
+            if (this.status) {
+                alert("Lighted");
+            } else {
+                alert("No Light")
+            }
+        };
+        this.turnOn = function () {
+            this.status = true;
+        };
+        this.turnOff = function () {
+            this.status = false
+        };
+    }
+    let battery = new Battery();
+    battery.setEnergy(10)
+    let Light = new FlashLight();
+    Light.setBattery(battery);
+
+    document.write("Battery info: " + Light.getBatteryInfo() + "<br>");
+    Light.light();
+
+    document.write("Turn On <br>");
+    Light.turnOn();
+    Light.light();
+    document.write("Battery info:" + Light.getBatteryInfo() + "<br>");
+
+    document.write("Turn Off <br>")
+    Light.turnOff();
+    Light.light()
+</script>
+</body>
+</html>

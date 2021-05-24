@@ -6,31 +6,95 @@
 </head>
 <body>
 <script>
-  function Run(N) {
-    debugger
-    if (N<2) {
-      return fasle;
+    // function Run(N) {
+    //   debugger
+    //   if (N<2) {
+    //     return fasle;
+    //   }
+    //   for (let i = 2; i< N; i++){
+    //     if (N % i == 0) {
+    //       return false;
+    //     }
+    //   }
+    //   return true
+    // }
+    // function display(num) {
+    //   let dem = 0;
+    //   while (dem<5){
+    //     if (Run(num) ==true) {
+    //       document.write(num +"");
+    //       dem += 1
+    //     }
+    //     num ++
+    //   }
+    // }
+    // display(5)
+    // let arr = []
+    // arr.add[]
+
+
+    let x = "Int32,Int32,Int32,Int32,Int32,Int32,Int32,Int32,Int32,Double,Double,Double"
+    // x = Array.from(new Set(x.split(','))).toString();
+    // document.write(x);
+    function removeDuplicate(str) {
+        let arr = str.split("");
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = i + 1; j < arr.length; j++) {
+                if (arr[i] == arr[j]) {
+                    arr.splice(j, 1);
+                    j--
+                }
+            }
+        }
+        return arr.join("")
     }
-    for (let i = 2; i< N; i++){
-      if (N % i == 0) {
-        return false;
-      }
+
+    document.write(removeDuplicate("asdzxcasdvczxcasdqwe") + "<br>")
+    let y = 'abcbacdeabc';
+
+
+    function LongestNonRepeatString(string) {
+        let currentString = []
+        for (let i = 0; i < string.length; i++) {
+            let currentCharPos = currentString.indexOf(string[i]);
+            if (currentCharPos !== -1) {
+                currentString.splice(0, currentCharPos + 1);
+            }
+            currentString.push(string[i]);
+            currentString.join("")
+        }
+        return currentString
     }
-    return true
-  }
-  function display(num) {
-    let dem = 0;
-    while (dem<5){
-      if (Run(num) ==true) {
-        document.write(num +"");
-        dem += 1
-      }
-      num ++
+
+    document.write(LongestNonRepeatString(y))
+    // document.write(LongestNonRepeatString(x))
+
+    let strr = prompt('Enter String');
+    let value = CheckPalindrome()
+    function CheckPalindrome() {
+        let limit = strr.length;
+        for (let i = 0; i < limit / 2; i++) {
+            if (strr[i] !== strr[limit - 1 - i]) {
+                return "Is  not Palindrome"
+            }
+        }
+        return "Is Palindrome"
     }
-  }
-  display(5)
-  let arr = []
-  arr.add[]
+    console.log(value)
+
+    // function CheckPalindrome() {
+    //     let value = str.split('');
+    //     let reverseValue = value.reverse();
+    //     let reverseArr = reverseValue.join('');
+    //     if (str == reverseArr) {
+    //         console.log('Is a Palindrome')
+    //     } else {
+    //         console.log('Is not a Palindrome')
+    //     }
+    // }
+    //
+    // let str = prompt('Enter String')
+    // CheckPalindrome()
 </script>
 </body>
 </html>
