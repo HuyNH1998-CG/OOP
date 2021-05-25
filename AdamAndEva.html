@@ -57,6 +57,7 @@
         }
         this.setGender = function (NewGender) {
             this.gender = NewGender
+            Display()
         }
         this.checkApple = function (Apple) {
             if (Apple.isEmpty() === false) {
@@ -82,13 +83,15 @@
             return this.name
         }
         this.setName = function (String) {
-            this.name = String
+            this.name = String;
+            Display()
         }
         this.getWeight = function () {
             return this.weight
         }
         this.setWeight = function (Int) {
-            this.weight = Int
+            this.weight = Int;
+            Display()
         }
     }
     let AppleOfEden = new Apple();
