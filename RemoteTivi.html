@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="Toshiba.channelChange()">ChangeChannel</button>
+<button onclick="Toshiba.volumeChange()">ChangeVolume</button>
+<button onclick="Toshiba.Power()">Power</button>
+<br>
+<p id="Display"></p>
+<button onclick="ToshibaRemote.changeChannel(Toshiba)">ChangeChannel</button>
+<button onclick="ToshibaRemote.changeVolume(Toshiba)">ChangeVolume</button>
+<button onclick="ToshibaRemote.remoteControl(Toshiba)">TurnOn/Off</button>
+<script>
+    class remote {
+        pCode;
+
+        constructor(pCode) {
+            this.pCode = pCode
+        }
+
+        changeChannel(Target) {
+            Target.Channel = Target.ChannelList[+prompt()]
+            Display()
+        }
+
+        changeVolume(Target) {
+            Target.volume = +prompt()
+            Display()
+        }
+
+        remoteControl(Target) {
+            Target.Power();
+        }
+    }
+
+    class Tivi {
+        ChannelList = ["channel 0", "channel 1", "channel 2", "channel 3", "channel 4", "channel 5", "channel 6", "channel 7",];
+        volume;
+        statusOnOff;
+
+        constructor(Channel, volume) {
+            this.Channel = this.ChannelList[Channel];
+            this.volume = volume;
+            this.statusOnOff = false
+        }
+
+        isOn() {
+            return this.statusOnOff
+        }
+
+        Power() {
+            if (this.isOn() === false) {
+                this.turnOn()
+            } else {
+                this.turnOff()
+            }
+        }
+
+        turnOn() {
+            this.statusOnOff = true;
+            Display()
+        }
+
+        turnOff() {
+            this.statusOnOff = false;
+            DisplayOff()
+        }
+
+        channelChange() {
+            for (let i = 0; i < this.ChannelList.length; i++) {
+                if (this.Channel === this.ChannelList[i]) {
+                    this.Channel = this.ChannelList[i + 1];
+                    Display()
+                    break
+                }
+            }
+        }
+
+        volumeChange() {
+            this.volume++
+            Display()
+            return this.volume
+        }
+    }
+
+    let Toshiba = new Tivi(0, 10);
+    let ToshibaRemote = new remote("ASD9076");
+
+    function Display() {
+        document.getElementById("Display").innerHTML = `${Toshiba.Channel} <br> Volume: ${Toshiba.volume}`
+    }
+
+    function DisplayOff() {
+        document.getElementById("Display").innerHTML = ""
+    }
+</script>
+</body>
+</html>

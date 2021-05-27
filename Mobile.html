@@ -27,97 +27,99 @@
 <br>
 <script>
     let Network = [];
-    let Mobile = function (battery,) {
-        this.arrayInbox = new Array();
-        this.arraySent = new Array();
-        this.arrayText = new Array();
-        this.battery = battery;
-        this.statusOn = false;
-        this.checkStatusOnOff = function () {
-            return this.statusOn;
-        }
-        this.turnOn = function () {
-            if (this.battery > 0) {
-                this.statusOn = true;
-                alert("Mobile Turned On");
-            } else {
-                alert("Not enough Battery");
+    class Mobile {
+        constructor(battery,) {
+            this.arrayInbox = new Array();
+            this.arraySent = new Array();
+            this.arrayText = new Array();
+            this.battery = battery;
+            this.statusOn = false;
+            this.checkStatusOnOff = function () {
+                return this.statusOn;
             }
+            this.turnOn = function () {
+                if (this.battery > 0) {
+                    this.statusOn = true;
+                    alert("Mobile Turned On");
+                } else {
+                    alert("Not enough Battery");
+                }
 
-        }
-        this.turnOff = function () {
+            }
+            this.turnOff = function () {
                 this.statusOn = false;
-            alert("Mobile Turned Off");
-        }
-        this.charge = function () {
-            alert("Charging " + this.battery++)
-        }
-        this.writeMessage = function () {
-            if (this.checkStatusOnOff() === true) {
-                this.arrayText.push(prompt("Message"));
-                this.battery--;
-                if (this.battery <= 0) {
-                    this.turnOff();
-                }
-            } else {
-                alert("Terminal is Turned Off");
+                alert("Mobile Turned Off");
             }
-        }
-        this.sendMessage = function (index) {
-            if (this.checkStatusOnOff() === true) {
-                this.arraySent.push(this.arrayText[index])
-                Network.push(this.arrayText[index]);
-                this.battery--;
-                if (this.battery <= 0) {
-                    this.turnOff();
-                }
-            } else {
-                alert("Terminal is Turned Off");
+            this.charge = function () {
+                alert("Charging " + this.battery++)
             }
+            this.writeMessage = function () {
+                if (this.checkStatusOnOff() === true) {
+                    this.arrayText.push(prompt("Message"));
+                    this.battery--;
+                    if (this.battery <= 0) {
+                        this.turnOff();
+                    }
+                } else {
+                    alert("Terminal is Turned Off");
+                }
+            }
+            this.sendMessage = function (index) {
+                if (this.checkStatusOnOff() === true) {
+                    this.arraySent.push(this.arrayText[index])
+                    Network.push(this.arrayText[index]);
+                    this.battery--;
+                    if (this.battery <= 0) {
+                        this.turnOff();
+                    }
+                } else {
+                    alert("Terminal is Turned Off");
+                }
 
-        }
-        this.receiveMessage = function () {
-            if (this.checkStatusOnOff() === true) {
-                this.arrayInbox.push(Network[Network.length - 1]);
-                Network.pop();
-                this.battery--;
-                if (this.battery <= 0) {
-                    this.turnOff();
-                }
-            } else {
-                alert("Terminal is Turned Off");
             }
-
-        }
-        this.viewInbox = function (index) {
-            if (this.checkStatusOnOff() === true) {
-                alert(this.arrayInbox[index]);
-                this.battery--;
-                if (this.battery <= 0) {
-                    this.turnOff();
+            this.receiveMessage = function () {
+                if (this.checkStatusOnOff() === true) {
+                    this.arrayInbox.push(Network[Network.length - 1]);
+                    Network.pop();
+                    this.battery--;
+                    if (this.battery <= 0) {
+                        this.turnOff();
+                    }
+                } else {
+                    alert("Terminal is Turned Off");
                 }
-            } else {
-                alert("Terminal is Turned Off");
-            }
 
-        }
-        this.viewSent = function (index) {
-            if (this.checkStatusOnOff() === true) {
-                alert(this.arraySent[index]);
-                this.battery--;
-                if (this.battery <= 0) {
-                    this.turnOff();
+            }
+            this.viewInbox = function (index) {
+                if (this.checkStatusOnOff() === true) {
+                    alert(this.arrayInbox[index]);
+                    this.battery--;
+                    if (this.battery <= 0) {
+                        this.turnOff();
+                    }
+                } else {
+                    alert("Terminal is Turned Off");
                 }
-            } else {
-                alert("Terminal is Turned Off");
-            }
 
-        }
-        this.use = function () {
-            if (this.checkStatusOnOff() === true) {
-                alert("Something runned " + this.battery--)
-                if (this.battery <= 0) {
-                    this.turnOff();
+            }
+            this.viewSent = function (index) {
+                if (this.checkStatusOnOff() === true) {
+                    alert(this.arraySent[index]);
+                    this.battery--;
+                    if (this.battery <= 0) {
+                        this.turnOff();
+                    }
+                } else {
+                    alert("Terminal is Turned Off");
+                }
+
+            }
+            this.use = function () {
+                if (this.checkStatusOnOff() === true) {
+                    alert("Something runned " + this.battery--)
+                    if (this.battery <= 0) {
+                        this.turnOff();
+                    }
                 }
             }
         }
@@ -199,7 +201,7 @@
     // }
 
     function viewSentMessIphone() {
-        Iphone.viewSent(prompt("Select Message Index" ))
+        Iphone.viewSent(prompt("Select Message Index"))
     }
 
     function viewInboxIphone() {

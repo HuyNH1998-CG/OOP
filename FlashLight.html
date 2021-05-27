@@ -5,60 +5,83 @@
     <title>FlashLite</title>
 </head>
 <body>
-<button type="button" onclick="turnOn()">Turn on</button>
+<button type="button" onclick="Light.turnOn()">Turn on</button>
 <button type="button" onclick="Light.turnOff()">Turn Off</button>
 <button type="button" onclick="Light.light()">This thing on?</button>
+<img src="Off.png" alt="" id="Light" width="410" height="608">
 <script>
-    let Battery = function () {
-        this.setEnergy = function (energy) {
+    class Battery {
+        energy;
+
+        constructor(energy) {
+            this.energy = energy
+        }
+
+        setEnergy(energy) {
             this.energy = energy;
         };
-        this.getEnergy = function () {
+
+        getEnergy() {
             return this.energy;
         };
-        this.decreaseEnergy = function () {
-            if (this.energy > 0) {
-                this.energy--;
-            }
+
+        decreaseEnergy() {
+            this.energy--;
         }
     }
-    let FlashLight = function () {
-        this.setBattery = function (battery) {
+
+    class FlashLight {
+        constructor() {
+            this.status = false
+        }
+
+        setBattery(battery) {
             this.battery = battery;
         }
-        this.getBatteryInfo = function () {
+
+        getBatteryInfo() {
             return this.battery.getEnergy();
         };
-        this.light = function () {
+
+        light() {
             if (this.status) {
-                alert("Lighted");
+                console.log("Light")
+                this.battery.decreaseEnergy()
+                this.getBatteryInfo()
+                console.log(this.getBatteryInfo())
+                if (this.getBatteryInfo() === 0) {
+                    this.turnOff()
+                }
             } else {
-                alert("No Light")
+                console.log("No Light")
             }
         };
-        this.turnOn = function () {
-            this.status = true;
+
+        turnOn() {
+            if (this.status === false) {
+                if (this.getBatteryInfo() > 0) {
+                    this.status = true;
+                    this.battery.decreaseEnergy();
+                    this.getBatteryInfo()
+                    console.log(this.getBatteryInfo())
+                    let img = document.getElementById("Light");
+                    img.src = "On.png";
+                }
+            }
         };
-        this.turnOff = function () {
-            this.status = false
+
+        turnOff() {
+            this.status = false;
+            let img = document.getElementById("Light");
+            img.src = "Off.png"
         };
+
     }
+
     let battery = new Battery();
     battery.setEnergy(10)
     let Light = new FlashLight();
     Light.setBattery(battery);
-
-    document.write("Battery info: " + Light.getBatteryInfo() + "<br>");
-    Light.light();
-
-    document.write("Turn On <br>");
-    Light.turnOn();
-    Light.light();
-    document.write("Battery info:" + Light.getBatteryInfo() + "<br>");
-
-    document.write("Turn Off <br>")
-    Light.turnOff();
-    Light.light()
 </script>
 </body>
 </html>

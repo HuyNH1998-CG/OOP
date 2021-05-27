@@ -6,98 +6,120 @@
 </head>
 <body>
 <div style="float: left">
-<h1>This Is Adam</h1>
-<p id="AdamName"></p>
-<p id="AdamGender"></p>
-<p id="AdamWeight"></p>
-<button type="button" onclick="Adam.checkApple(AppleOfEden)">Apple?</button><br>
-<button type="button" onclick="Adam.eat(AppleOfEden)">Eat</button><br>
-<button type="button" onclick="Adam.say(prompt())">Speak</button><br>
-<button type="button" onclick="Adam.setName(prompt())">New Name</button><br>
-<button type="button" onclick="Adam.setGender(prompt())">New Gender</button><br>
-<button type="button" onclick="Adam.setWeight(prompt())">New Weight</button><br>
-<h1>This Is Eva</h1>
-<p id="EvaName"></p>
-<p id="EvaGender"></p>
-<p id="EvaWeight"></p>
-<button type="button" onclick="Eva.checkApple(AppleOfEden)">Apple?</button><br>
-<button type="button" onclick="Eva.eat(AppleOfEden)">Eat</button><br>
-<button type="button" onclick="Eva.say(prompt())">Speak</button><br>
-<button type="button" onclick="Eva.setName(prompt())">New Name</button><br>
-<button type="button" onclick="Eva.setGender(prompt())">New Gender</button><br>
-<button type="button" onclick="Eva.setWeight(prompt())">New Weight</button><br>
+    <h1>This Is Adam</h1>
+    <p id="AdamName"></p>
+    <p id="AdamGender"></p>
+    <p id="AdamWeight"></p>
+    <button type="button" onclick="Adam.checkApple(AppleOfEden)">Apple?</button>
+    <br>
+    <button type="button" onclick="Adam.eat(AppleOfEden)">Eat</button>
+    <br>
+    <button type="button" onclick="Adam.say(prompt())">Speak</button>
+    <br>
+    <button type="button" onclick="Adam.setName(prompt())">New Name</button>
+    <br>
+    <button type="button" onclick="Adam.setGender(prompt())">New Gender</button>
+    <br>
+    <button type="button" onclick="Adam.setWeight(prompt())">New Weight</button>
+    <br>
+    <h1>This Is Eva</h1>
+    <p id="EvaName"></p>
+    <p id="EvaGender"></p>
+    <p id="EvaWeight"></p>
+    <button type="button" onclick="Eva.checkApple(AppleOfEden)">Apple?</button>
+    <br>
+    <button type="button" onclick="Eva.eat(AppleOfEden)">Eat</button>
+    <br>
+    <button type="button" onclick="Eva.say(prompt())">Speak</button>
+    <br>
+    <button type="button" onclick="Eva.setName(prompt())">New Name</button>
+    <br>
+    <button type="button" onclick="Eva.setGender(prompt())">New Gender</button>
+    <br>
+    <button type="button" onclick="Eva.setWeight(prompt())">New Weight</button>
+    <br>
 </div>
 <div style="float: right">
     <h1>This Is Apple Of Eden</h1>
     <p id="AppleWeight"></p>
 </div>
 <script>
-    let Apple = function () {
-        this.weight = 10;
-        this.decrease = function () {
-            this.weight--;
-        }
-        this.isEmpty = function () {
-            if (this.weight === 0) {
-                return true;
-            } else if (this.weight > 0) {
-                return false;
+    class Apple {
+        weight;
+        constructor() {
+            this.weight = 10;
+            this.decrease = function() {
+                this.weight--;
             }
-        }
-        this.getWeight = function () {
-            return this.weight;
+            this.isEmpty = function () {
+                if (this.weight === 0) {
+                    return true;
+                } else if (this.weight > 0) {
+                    return false;
+                }
+            }
+            this.getWeight = function () {
+                return this.weight;
+            }
         }
     }
-    let Human = function (name, gender, weight) {
-        this.name = name;
-        this.gender = gender
-        this.weight = weight
-        this.getGender = function () {
-            return this.gender
-        }
-        this.setGender = function (NewGender) {
-            this.gender = NewGender
-            Display()
-        }
-        this.checkApple = function (Apple) {
-            if (Apple.isEmpty() === false) {
-                console.log("Apple have " + Apple.weight + " Left")
+
+    class Human {
+        name;
+        gender;
+        weight;
+        constructor(name, gender, weight) {
+            this.name = name;
+            this.gender = gender
+            this.weight = weight
+            this.getGender = function () {
+                return this.gender
             }
-            else {
-                console.log("No Apple")
-            }
-        }
-        this.eat = function (Apple) {
-            if (Apple.isEmpty() === false) {
-                Apple.decrease()
-                this.weight++
+            this.setGender = function (NewGender) {
+                this.gender = NewGender
                 Display()
-            } else {
-                alert(this.name + " is sad because apple is gone :(")
+            }
+            this.checkApple = function (Apple) {
+                if (Apple.isEmpty() === false) {
+                    console.log("Apple have " + Apple.weight + " Left")
+                } else {
+                    console.log("No Apple")
+                }
+            }
+            this.eat = function (Apple) {
+                if (Apple.isEmpty() === false) {
+                    Apple.decrease()
+                    this.weight++
+                    Display()
+                } else {
+                    alert(this.name + " is sad because apple is gone :(")
+                }
+            }
+            this.say = function (String) {
+                console.log(this.name + ":" + String)
+            }
+            this.getName = function () {
+                return this.name
+            }
+            this.setName = function (String) {
+                this.name = String;
+                Display()
+            }
+            this.getWeight = function () {
+                return this.weight
+            }
+            this.setWeight = function (Int) {
+                this.weight = Int;
+                Display()
             }
         }
-        this.say = function (String) {
-            console.log(this.name + ":" + String)
-        }
-        this.getName = function () {
-            return this.name
-        }
-        this.setName = function (String) {
-            this.name = String;
-            Display()
-        }
-        this.getWeight = function () {
-            return this.weight
-        }
-        this.setWeight = function (Int) {
-            this.weight = Int;
-            Display()
-        }
     }
+
     let AppleOfEden = new Apple();
     let Adam = new Human("Adam", "Male", 75);
-    let Eva = new Human("Eva" , "Female", 40)
-    function Display(){
+    let Eva = new Human("Eva", "Female", 40)
+
+    function Display() {
         let aName = Adam.getName();
         let aGender = Adam.getGender();
         let aWeight = Adam.getWeight();

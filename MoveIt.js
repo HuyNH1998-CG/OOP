@@ -30,33 +30,38 @@ let hero = new Hero('Furen.jpg', 20, 30, 100, 25);
 
 function start() {
     document.getElementById('game').innerHTML = hero.getHeroElement();
-    switch (event.which) {
-        case 37:
-            if (hero.left < window.innerWidth - hero.size) {
-                hero.moveLeft();
 
-            }
-            break;
-        case 38:
-            if (hero.left < window.innerWidth - hero.size) {
-                hero.moveUp();
-
-            }
-            break;
-        case 39:
-            if (hero.left < window.innerWidth - hero.size) {
-                hero.moveRight();
-
-            }
-            break;
-        case 40:
-            if (hero.left < window.innerWidth - hero.size) {
-                hero.moveDown();
-            }
-            break;
-    }
-
-    setTimeout(start, 500)
+    setTimeout(start, 1)
 }
-
+let changing_direction = false
+document.addEventListener("keydown", change_direction);
+function change_direction(event) {
+    const LEFT_KEY = 37;
+    const RIGHT_KEY = 39;
+    const UP_KEY = 38;
+    const DOWN_KEY = 40;
+    if (changing_direction) return;
+    changing_direction = true;
+    const keyPressed = event.keyCode;
+    const goingUp = dy === -10;
+    const goingDown = dy === 10;
+    const goingRight = dx === 10;
+    const goingLeft = dx === -10;
+    if (keyPressed === LEFT_KEY && !goingRight) {
+        dx = -10;
+        dy = 0;
+    }
+    if (keyPressed === UP_KEY && !goingDown) {
+        dx = 0;
+        dy = -10;
+    }
+    if (keyPressed === RIGHT_KEY && !goingLeft) {
+        dx = 10;
+        dy = 0;
+    }
+    if (keyPressed === DOWN_KEY && !goingUp) {
+        dx = 0;
+        dy = 10;
+    }
+}
 start()

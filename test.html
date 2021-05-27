@@ -6,96 +6,144 @@
 </head>
 <body>
 <script>
-    // function Run(N) {
-    //   debugger
-    //   if (N<2) {
-    //     return fasle;
-    //   }
-    //   for (let i = 2; i< N; i++){
-    //     if (N % i == 0) {
-    //       return false;
+    //     // function Run(N) {
+    //     //   debugger
+    //     //   if (N<2) {
+    //     //     return fasle;
+    //     //   }
+    //     //   for (let i = 2; i< N; i++){
+    //     //     if (N % i == 0) {
+    //     //       return false;
+    //     //     }
+    //     //   }
+    //     //   return true
+    //     // }
+    //     // function display(num) {
+    //     //   let dem = 0;
+    //     //   while (dem<5){
+    //     //     if (Run(num) ==true) {
+    //     //       document.write(num +"");
+    //     //       dem += 1
+    //     //     }
+    //     //     num ++
+    //     //   }
+    //     // }
+    //     // display(5)
+    //     // let arr = []
+    //     // arr.add[]
+    //
+    //
+    //     let x = "Int32,Int32,Int32,Int32,Int32,Int32,Int32,Int32,Int32,Double,Double,Double"
+    //     // x = Array.from(new Set(x.split(','))).toString();
+    //     // document.write(x);
+    //     // function removeDuplicate(str) {
+    //     //     let arr = str.split("");
+    //     //     for (let i = 0; i < arr.length; i++) {
+    //     //         for (let j = i + 1; j < arr.length; j++) {
+    //     //             if (arr[i] == arr[j]) {
+    //     //                 arr.splice(j, 1);
+    //     //                 j--
+    //     //             }
+    //     //         }
+    //     //     }
+    //     //     return arr.join("")
+    //     // }
+    //     //
+    //     // document.write(removeDuplicate("asdzxcasdvczxcasdqwe") + "<br>")
+    //
+    //     let y = 'abccacdeabc';
+    //     function LongestNonRepeatString(string) {
+    //         let currentString = []
+    //         for (let i = 0; i < string.length; i++) {
+    //             let currentCharPos = currentString.indexOf(string[i]);
+    //             if (currentCharPos !== -1) {
+    //                 currentString.splice(0, currentCharPos + 1);
+    //             }
+    //             currentString.push(string[i]);
+    //             currentString.join("")
+    //         }
+    //         return currentString
     //     }
-    //   }
-    //   return true
-    // }
-    // function display(num) {
-    //   let dem = 0;
-    //   while (dem<5){
-    //     if (Run(num) ==true) {
-    //       document.write(num +"");
-    //       dem += 1
-    //     }
-    //     num ++
-    //   }
-    // }
-    // display(5)
-    // let arr = []
-    // arr.add[]
-
-
-    let x = "Int32,Int32,Int32,Int32,Int32,Int32,Int32,Int32,Int32,Double,Double,Double"
-    // x = Array.from(new Set(x.split(','))).toString();
-    // document.write(x);
-    // function removeDuplicate(str) {
-    //     let arr = str.split("");
-    //     for (let i = 0; i < arr.length; i++) {
-    //         for (let j = i + 1; j < arr.length; j++) {
-    //             if (arr[i] == arr[j]) {
-    //                 arr.splice(j, 1);
-    //                 j--
+    //
+    // document.write(LongestNonRepeatString(y))
+    //     // // document.write(LongestNonRepeatString(x))
+    //     //
+    //     // let strr = prompt('Enter String');
+    //     // let value = CheckPalindrome()
+    //     //
+    //     // function CheckPalindrome() {
+    //     //     let limit = strr.length;
+    //     //     for (let i = 0; i < limit / 2; i++) {
+    //     //         if (strr[i] !== strr[limit - 1 - i]) {
+    //     //             return "Is  not Palindrome"
+    //     //         }
+    //     //     }
+    //     //     return "Is Palindrome"
+    //     // }
+    //     //
+    //     // console.log(value)
+    //
+    //     // function CheckPalindrome() {
+    //     //     let value = str.split('');
+    //     //     let reverseValue = value.reverse();
+    //     //     let reverseArr = reverseValue.join('');
+    //     //     if (str == reverseArr) {
+    //     //         console.log('Is a Palindrome')
+    //     //     } else {
+    //     //         console.log('Is not a Palindrome')
+    //     //     }
+    //     // }
+    //     //
+    //     // let str = prompt('Enter String')
+    //     // CheckPalindrome()
+    // function timeConversion(s) {
+    //     debugger
+    //     let h1 = Number(s[1] - '0')
+    //     let h2 = Number(s[0] - '0')
+    //     let hh = (h2 * 10 + h1 % 10);
+    //     let timed = "";
+    //     if (s[8] == "A") {
+    //         if (hh == 12) {
+    //             timed = "00";
+    //             for (let i = 2; i <= 7; i++) {
+    //                 timed += s[i];
+    //             }
+    //         } else {
+    //             for (let i = 0; i <= 7; i++) {
+    //                 timed += s[i];
+    //             }
+    //         }
+    //     } else {
+    //         if (hh == 12) {
+    //             timed = "12";
+    //             for (let i = 2; i <= 7; i++){
+    //             timed += s[i];}
+    //         } else {
+    //             hh = hh + 12;
+    //             timed = hh;
+    //             for (let i = 2; i <= 7; i++) {
+    //                 timed += s[i]
     //             }
     //         }
     //     }
-    //     return arr.join("")
+    //     return timed
     // }
-    //
-    // document.write(removeDuplicate("asdzxcasdvczxcasdqwe") + "<br>")
-
-    let y = 'abccacdeabc';
-    function LongestNonRepeatString(string) {
-        let currentString = []
-        for (let i = 0; i < string.length; i++) {
-            let currentCharPos = currentString.indexOf(string[i]);
-            if (currentCharPos !== -1) {
-                currentString.splice(0, currentCharPos + 1);
+    // console.log(timeConversion("12:45:54PM"))
+    let candlesIs = [18,90,90,13,90,75,90,8,90,43]
+    function birthdayCakeCandles(candles) {
+        let max = candles[0];
+        let count = 0
+        for (let i = 0; i < candles.length; i++) {
+            if (candles[i] >= max){
+                max = candles[i]
+                if (candles[i] == max) {
+                    count++
+                }
             }
-            currentString.push(string[i]);
-            currentString.join("")
         }
-        return currentString
+        return count
     }
-
-document.write(LongestNonRepeatString(y))
-    // // document.write(LongestNonRepeatString(x))
-    //
-    // let strr = prompt('Enter String');
-    // let value = CheckPalindrome()
-    //
-    // function CheckPalindrome() {
-    //     let limit = strr.length;
-    //     for (let i = 0; i < limit / 2; i++) {
-    //         if (strr[i] !== strr[limit - 1 - i]) {
-    //             return "Is  not Palindrome"
-    //         }
-    //     }
-    //     return "Is Palindrome"
-    // }
-    //
-    // console.log(value)
-
-    // function CheckPalindrome() {
-    //     let value = str.split('');
-    //     let reverseValue = value.reverse();
-    //     let reverseArr = reverseValue.join('');
-    //     if (str == reverseArr) {
-    //         console.log('Is a Palindrome')
-    //     } else {
-    //         console.log('Is not a Palindrome')
-    //     }
-    // }
-    //
-    // let str = prompt('Enter String')
-    // CheckPalindrome()
+    console.log(birthdayCakeCandles(candlesIs))
 </script>
 </body>
 </html>

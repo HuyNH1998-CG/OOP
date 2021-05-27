@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="tom.eatRat(jerry)">Eat</button>
+<script>
+    class Rat {
+        name;
+        weight;
+        speed;
+        alive;
+        constructor(name, weight, speed) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+            this.alive = true;
+        }
+        squeak(){
+            alert("squeak squeak")
+        }
+        getWeight(){
+            return this.weight;
+        }
+        isAlive(){
+            if (this.weight > 0) {
+                this.alive = true;
+            }
+            else {
+                this.alive = false;
+            }
+            return this.alive
+        }
+        respawn(){
+            this.weight = prompt()
+            this.speed = prompt()
+        }
+        getEaten(){
+            this.weight -= 5
+        }
+    }
+
+    class Cat {
+        name;
+        weight;
+        speed;
+        constructor(name, weight, speed) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+        }
+        meow() {
+            alert("meow meow")
+        }
+        catchRat(Rat){
+            let caught = false
+            if (Rat.isAlive() === true) {
+                if (this.speed > Rat.speed){
+                Rat.getWeight();
+                caught = true
+                }
+            }
+            else if (Rat.isAlive() === false){
+                Rat.respawn()
+            }
+            return caught
+        }
+        eatRat(Rat){
+            if(this.catchRat(Rat) === true){
+                Rat.getEaten()
+                this.weight += 5
+                console.log(Rat.name + ": " + Rat.getWeight() + " " + this.name + ":" + this.weight)
+            }
+        }
+    }
+
+    let jerry = new Rat("Jerry", 10, 5);
+    let tom = new Cat("Tom",15,10)
+</script>
+</body>
+</html>
